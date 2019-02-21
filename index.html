@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  <title>ArcGIS JSAPI 4 TypeScript Demo</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+  <script>
+    var locationPath = location.pathname.replace(/\/[^\/]+$/, "/");
+    console.log(locationPath)
+    window.dojoConfig = {
+      async: true,
+      deps: ["jquery"],
+      has: {
+        "esri-promise-compatibility": 1
+      },
+      packages: [
+        {
+          name: "app",
+          location: locationPath + "app"
+        },
+        {
+          name: "jquery",
+          location: "https://code.jquery.com/",
+          main: "jquery-3.3.1.slim.min"
+        },
+      ]
+    };
+  </script>
+  <script src="https://js.arcgis.com/4.10/"></script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <button id="btnClickMe" style="position:absolute;top:10px;left:60px;font-weight:bold;background:lime;width:180px;height:40px;">Add Point to center of map</button>
+
+  <script type="text/javascript">
+
+    require(["jquery","app/main"], function ($, main) {
+       let myClass = new main.MyClass();
+       myClass.loadMap();
+    })
+  </script>
+</body>
+
+</html>
